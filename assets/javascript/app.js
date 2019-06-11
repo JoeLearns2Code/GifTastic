@@ -9,7 +9,7 @@ function displayFighter() {
     //variable for the search word entered and  queryURL
 
     var searchWord = $(this).attr("data-name");
-    
+
     //query needs to be limited to 10 results
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=qIcY1vxKGji70LwiUeYTlEW7IYWpqvP9&limit=10";
 
@@ -20,46 +20,46 @@ function displayFighter() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-     console.log(queryURL);
+        console.log(queryURL);
 
-     console.log(response);
+        console.log(response);
         //variable for query results
-    var results = response.data;
-    
-    //iterate the results 
-    for (var i = 0; i < results.length; i++) {
+        var results = response.data;
 
-        //add a div to hold the API data
-    var fighterDiv = $("<div class='fighterimg'>");
+        //iterate the results 
+        for (var i = 0; i < results.length; i++) {
 
-        //get the gif rating to be displayed
-    var rating = results[i].rating;
-        //get the animated gif image
-    var animatedGif = results[i].images.fixed_height.url;
-        //get the static gif image
-    var staticGif = results[i].images.fixed_height_still.url;
-    //div for image and loaded gif  - should be static version to start
-    var image = $("<img>");
-    //div for rating
-    var rateDisplay = $("<p>").text("Rating: " + rating);
-    
-    //add class to image for later reference  
-    image.addClass("fighterGIPHY");
-    
-    
-    
-    image.attr("src", staticGif);
-    image.attr("data-state", "still");
-    image.attr("data-still", staticGif);
-    image.attr("data-animate", animatedGif);
-    
-    //append rating and images to fighterDiv
-    fighterDiv.append(rateDisplay);
-    fighterDiv.append(image);
-    
+            //add a div to hold the API data
+            var fighterDiv = $("<div class='fighterimg'>");
 
-    
-    $("#fighterspace").prepend(fighterDiv);
+            //get the gif rating to be displayed
+            var rating = results[i].rating;
+            //get the animated gif image
+            var animatedGif = results[i].images.fixed_height.url;
+            //get the static gif image
+            var staticGif = results[i].images.fixed_height_still.url;
+            //div for image and loaded gif  - should be static version to start
+            var image = $("<img>");
+            //div for rating
+            var rateDisplay = $("<p>").text("Rating: " + rating);
+
+            //add class to image for later reference  
+            image.addClass("fighterGIPHY");
+
+
+
+            image.attr("src", staticGif);
+            image.attr("data-state", "still");
+            image.attr("data-still", staticGif);
+            image.attr("data-animate", animatedGif);
+
+            //append rating and images to fighterDiv
+            fighterDiv.append(rateDisplay);
+            fighterDiv.append(image);
+
+
+
+            $("#fighterspace").prepend(fighterDiv);
         }
 
     });
@@ -68,27 +68,21 @@ function displayFighter() {
 
 // Function for animating & pausing gifs
 
-$(document).on("click", ".fighterGIPHY", pausePlayGifs);
+$(document).on("click", ".fighterGIPHY", startStopGIF);
 
-function pausePlayGifs() {
+function startStopGIF() {
     var state = $(this).attr("data-state");
-   if (state === "still") {
-     $(this).attr("src", $(this).attr("data-animate"));
-     $(this).attr("data-state", "animate");
-   } else {
-     $(this).attr("src", $(this).attr("data-still"));
-     $(this).attr("data-state", "still");
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
     }
 };
 
 
 
-
-
-
-// Activate the displayFighter function
-
-$(document).on("click", ".fighter-button" , displayFighter);
 
 
 
