@@ -1,6 +1,6 @@
 //array for topics to be inlcuded as buttons
 
-var fighterList = ["Ryu", "Ken Masters", "Vega", "Chun-Li", "Sub-Zero", "Johnny Cage", "Sonya Blade", "Sabrewulf", "Fulgore", "Sol Badguy", "Ky Kiske", "Millia Rage", "Street Fighter", "Mortal Kombat", "Killer Instinct", "Guilty Gear"];
+var fighterList = ["Ryu", "Ken Masters", "M.Bison", "Chun-Li", "Sub-Zero", "Johnny Cage", "Sonya Blade", "Sabrewulf", "Fulgore", "Sagat", "Shang Tsung", "Cammy", "Street Fighter", "Mortal Kombat", "Killer Instinct", "Guilty Gear"];
 
 // Main function to retrieve the data from GIPHY and display it on the page.
 
@@ -49,7 +49,11 @@ function displayFighter() {
     
     
     image.attr("src", staticGif);
-    image.attr(animatedGif);
+    image.attr("data-state", "still");
+    image.attr("data-still", staticGif);
+    image.attr("data-animate", animatedGif);
+    
+    //append rating and images to fighterDiv
     fighterDiv.append(rateDisplay);
     fighterDiv.append(image);
     
@@ -61,6 +65,26 @@ function displayFighter() {
     });
 
 };
+
+// Function for animating & pausing gifs
+
+$(document).on("click", ".fighterGIPHY", pausePlayGifs);
+
+function pausePlayGifs() {
+    var state = $(this).attr("data-state");
+   if (state === "still") {
+     $(this).attr("src", $(this).attr("data-animate"));
+     $(this).attr("data-state", "animate");
+   } else {
+     $(this).attr("src", $(this).attr("data-still"));
+     $(this).attr("data-state", "still");
+    }
+};
+
+
+
+
+
 
 // Activate the displayFighter function
 
