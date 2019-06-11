@@ -8,7 +8,7 @@ function displayFighter() {
 
     //variable for the search word entered and  queryURL
 
-    var searchWord = $(this).attr("data-name");
+    var searchWord = $(this).attr("data-searchWord");
     
     //query needs to be limited to 10 results
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=qIcY1vxKGji70LwiUeYTlEW7IYWpqvP9&limit=10";
@@ -20,14 +20,17 @@ function displayFighter() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+     console.log(queryURL);
+
+     console.log(response);
         //variable for query results
     var results = response.data;
-    console.log(results);
+    
     //iterate the results 
     for (var i = 0; i < results.length; i++) {
 
         //add a div to hold the API data
-    var fighterDiv = $("div class='fighterimg'>");
+    var fighterDiv = $("<div class='fighterimg'>");
 
         //get the gif rating to be displayed
     var rating = results[i].rating;
@@ -35,18 +38,21 @@ function displayFighter() {
     var animatedGif = results[i].images.fixed_height.url;
         //get the static gif image
     var staticGif = results[i].images.fixed_height_still.url;
+    //div for image and loaded gif  - should be static version to start
+    var image = $("<img>");
     //div for rating
     var rateDisplay = $("<p>").text("Rating: " + rating);
-    //div for image and loaded gif  - should be static version to start
-    var image = $("<img>").attr("src", staticGif);
+    
     //add class to image for later reference  
     image.addClass("fighterGIPHY");
-
     
-    image.attr(staticGif);
+    
+    
+    image.attr("src", staticGif);
     image.attr(animatedGif);
     fighterDiv.append(rateDisplay);
     fighterDiv.append(image);
+    
 
     
     $("#fighterspace").prepend(fighterDiv);
@@ -59,6 +65,7 @@ function displayFighter() {
 // Activate the displayFighter function
 
 $(document).on("click", ".fighter-button" , displayFighter);
+
 
 
 //Function for displaying starting buttons
