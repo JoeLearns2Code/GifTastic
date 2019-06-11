@@ -8,7 +8,7 @@ function displayFighter() {
 
     //variable for the search word entered and  queryURL
 
-    var searchWord = $(this).attr("data-searchWord");
+    var searchWord = $(this).attr("data-name");
     
     //query needs to be limited to 10 results
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchWord + "&api_key=qIcY1vxKGji70LwiUeYTlEW7IYWpqvP9&limit=10";
