@@ -1,0 +1,62 @@
+.container {
+
+margin-right: auto;
+margin-left: auto;
+max-width: 90%;
+padding-left: 10px;
+padding-right: 10px;
+
+
+}
+
+
+
+#user-form {
+
+margin-top: 25px;
+float: right;
+font-family: 'Alfa Slab One', cursive;
+color: blue;
+
+
+}
+
+h1 {
+
+font-family: 'Faster One', cursive;
+font-size: 36pt;
+color: rgb(201, 91, 18);
+text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+
+}
+
+.fighter-button {
+
+font-family: 'Francois One', sans-serif;
+font-size: 14pt;
+width: 8em;
+
+}
+
+#add-fighter {
+
+font-family: 'Francois One', sans-serif;
+font-size: 12pt;
+width: 6em;    
+
+
+}
+
+
+#fighterspace {
+
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+
+
+}

@@ -41,12 +41,14 @@ function displayFighter() {
             //div for image and loaded gif  - should be static version to start
             var image = $("<img>");
             //div for rating
-            var rateDisplay = $("<p>").text("Rating: " + rating);
+            //
+            var rateDisplay = $("<p>").text("Rating: " + rating.toUpperCase());
 
             //add class to image for later reference  
             image.addClass("fighterGIPHY");
 
 
+            //add attributes for static & animated images and then append to fighterDiv
 
             image.attr("src", staticGif);
             image.attr("data-state", "still");
@@ -58,7 +60,7 @@ function displayFighter() {
             fighterDiv.append(image);
 
 
-
+            //finally prepend fighterDiv to the div on HTML, prepend in order for the latest set of images to appear at the top.
             $("#fighterspace").prepend(fighterDiv);
         }
 
@@ -68,13 +70,19 @@ function displayFighter() {
 
 // Function for animating & pausing gifs
 
+//event listener for clicks on elements with the .fighterGIPHY class, start/stop function
+
+
 $(document).on("click", ".fighterGIPHY", startStopGIF);
 
 function startStopGIF() {
+    //look for gifs with the "data-state" attribute
     var state = $(this).attr("data-state");
+    //if the state is still, add data-animate attribute and change "data-state" to annimate
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
+    //if "data-state" is animate, change attribute to data-still and revert "data-state" to still
     } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");

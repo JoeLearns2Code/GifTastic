@@ -1,6 +1,6 @@
 # GifTastic
 
-This is a gif generating page created with a fighting game character theme.  Images are pulled via AJAX from the GIPHY API(see below for link).  To gather images, simply click on one of the buttons located towards the top of the page.  Or, if you have a favorite fighter, enter the character's name in the "Choose Your Fighter" text bar and press on the select button.  You will see a new button has been generated for the character; click on this button to generate images.  
+This is a gif generating page created with a fighting game character theme.  Images are pulled via AJAX from the GIPHY API(see below for link).  To gather images, simply click on one of the buttons located towards the top of the page.  Or, if you have a favorite fighter, enter the character's name in the "Choose Your Fighter" text bar and press on the select button.  You will see a new button has been generated for the character; click on this button to generate images(reccomendation: Blanka).  
 
 You may view each image's animation by clicking on it.  Click on it again to make the animation stop.  Also, mind the rating above each image.  If an image is rated R, it may potentially be gruesome.  
 
